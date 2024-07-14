@@ -1,4 +1,3 @@
-import toast from "react-hot-toast";
 import Modal from "react-modal";
 import { ImageModalProps } from "../App/App.type";
 
@@ -20,8 +19,8 @@ const ImageModal = ({
       {imageUrl ? (
         <img src={imageUrl} alt="Large View" />
       ) : (
-        toast.error("No image available!")
-      )}
+        <p>No image available!</p>)
+      }
     </Modal>
   );
 };

@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import toast, { Toaster } from "react-hot-toast";
+import { Toaster } from "react-hot-toast";
 import Modal from "react-modal";
 import { getPhotos } from "../apiServise/photos";
 import SearchBar from "../SearchBar/SearchBar";
@@ -67,7 +67,7 @@ function App() {
         if (error instanceof Error) {
           setError(error);
         } else {
-          setError(new Error(toast.error("An unexpected error occurred")));
+          setError(new Error("An unexpected error!"));
         }
       } finally {
         setIsLoading(false);
@@ -101,10 +101,10 @@ function App() {
         !isEmpty &&
         !isLoading &&
         !error &&
-        toast.error("Let’s begin search 🔎")}
+        <p>Let’s begin search 🔎</p>}
       {isLoading && <Loader />}
       {error && <ErrorMessage />}
-      {isEmpty && toast.error("Sorry. There are no images...😭")}
+      {isEmpty && <p>Sorry. There are no images...😭</p>}
       {showBtn && !isLoading && <LoadMoreBtn onHandleClick={onHandleClick} />}
       <ImageModal
         modalIsOpen={modalIsOpen}
