@@ -1,15 +1,11 @@
+import { ImageGalleryProps } from "../App/App.type";
 import ImageCard from "../ImageCard/ImageCard";
 
-const ImageGallery = ({ images, onImageClick }) => {
+const ImageGallery = ({ images, onImageClick }: ImageGalleryProps) => {
   return (
     <ul>
-      {images.map(({ id, urls, description }) => (
-        <ImageCard
-          key={id}
-          urls={urls}
-          description={description}
-          onImageClick={onImageClick}
-        />
+      {images.map((photo) => (
+        <ImageCard key={photo.id} photo={photo} onImageClick={onImageClick} />
       ))}
     </ul>
   );

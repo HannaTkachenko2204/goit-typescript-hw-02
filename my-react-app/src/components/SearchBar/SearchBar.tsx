@@ -1,19 +1,23 @@
 import { useState } from "react";
 import { toast } from "react-hot-toast";
+import { SearchBarProps } from "../App/App.type";
 
-const SearchBar = ({ onSubmit }) => {
-  const [searchQuery, setSearchQuery] = useState("");
-  const handleChange = (evt) => {
+const SearchBar = ({ onSubmit }: SearchBarProps) => {
+  const [searchQuery, setSearchQuery] = useState<string>("");
+
+  const handleChange = (evt: React.ChangeEvent<HTMLInputElement>) => {
     setSearchQuery(evt.target.value);
   };
-  const handleSubmit = (evt) => {
+
+  const handleSubmit = (evt: React.FormEvent<HTMLFormElement>) => {
     evt.preventDefault();
     if (!searchQuery.trim()) {
-      return toast.error("Can not be empty!");
+      return toast.error("Cannot be empty!");
     }
     onSubmit(searchQuery);
     setSearchQuery("");
   };
+
   return (
     <header>
       <form onSubmit={handleSubmit}>

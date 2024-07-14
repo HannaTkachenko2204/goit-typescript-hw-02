@@ -1,12 +1,13 @@
+import { ImageCardProps } from "../App/App.type";
 import style from "./ImageCard.module.css";
 
-const ImageCard = ({ urls, description, onImageClick }) => {
+const ImageCard = ({ photo, onImageClick }: ImageCardProps) => {
   return (
     <li className={style.item}>
       <img
-        src={urls.small}
-        alt={description}
-        onClick={() => onImageClick(urls.regular)}
+        src={photo.urls.small}
+        alt={photo.alt_description || "Image"}
+        onClick={() => onImageClick(photo.urls.regular)}
       />
     </li>
   );
